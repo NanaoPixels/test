@@ -1,0 +1,9 @@
+requests
+numpy
+opencv-python==4.8.0.76
+discord.py==2.3.2
+pyproject-toml==0.0.10
+colorama==0.4.6
+moviepy
+huggingface_hub
+unidecode
