@@ -1,4 +1,4 @@
-python install -r requeriments
+!python install -r requeriments
 
 import random
 from unidecode import unidecode
