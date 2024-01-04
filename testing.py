@@ -1,3 +1,5 @@
+python install -r requeriments
+
 import random
 from unidecode import unidecode
 import textwrap
