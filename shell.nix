@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/057f9ae.tar.gz) {} }:
 
 let
   pythonPath = with pkgs.python3Packages; [
@@ -19,5 +19,6 @@ pkgs.mkShell {
     pkgs.python3Packages.huggingface_hub
     pkgs.python3Packages.unidecode
     # Add any other required dependencies here
-  ] ++ pythonPath;
+  ];
+  shellHook = ''export PYTHONPATH=$PYTHONPATH${PATH_SEPARATOR}${pythonPath.join(":")}''; 
 }
