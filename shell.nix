@@ -1,10 +1,12 @@
+{ pkgs ? import <nixpkgs> {} }:
+
 let
-  pkgs = import <nixpkgs> {};
-
-in pkgs.python3Packages.buildPythonApplication rec {
-  name = "testing";
-  src = ./.;
-
+  pythonPath = with pkgs.python3Packages; [
+    numpy
+    # Add any other required Python dependencies here
+  ];
+in
+pkgs.mkShell {
   buildInputs = [
     pkgs.python3Packages.opencv-python
     pkgs.libGL
@@ -17,10 +19,5 @@ in pkgs.python3Packages.buildPythonApplication rec {
     pkgs.python3Packages.huggingface_hub
     pkgs.python3Packages.unidecode
     # Add any other required dependencies here
-  ];
-
-  pythonPath = with pkgs.python3Packages; [
-    numpy
-    # Add any other required Python dependencies here
-  ];
+  ] ++ pythonPath;
 }
