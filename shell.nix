@@ -5,6 +5,7 @@ let
     numpy
     # Add any other required Python dependencies here
   ];
+  PATH_SEPARATOR = ":";  # Define the PATH_SEPARATOR variable
 in
 pkgs.mkShell {
   buildInputs = [
